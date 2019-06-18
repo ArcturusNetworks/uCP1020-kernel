@@ -41,6 +41,55 @@
 		reg = <0x0 0x0 0x04000000>;
 		bank-width = <2>;
 		device-width = <1>;
+
+		partition@100000 {
+			/* 7MB - PART 0 */
+			reg = <0x00100000 0x00700000>;
+			label = "0";
+		};
+
+		partition@800000 {
+			/* 32MB - PART 1 */
+			reg = <0x0800000 0x02000000>;
+			label = "1";
+		};
+
+		partition@2800000 {
+			/* 8MB - PART 2 */
+			reg = <0x02800000 0x00800000>;
+			label = "2";
+		};
+
+		partition@3000000 {
+			/* (16MB - 512K) - PART 3 JFFS 2 */
+			reg = <0x03000000 0x00f80000>;
+			label = "3";
+		};
+
+		partition@0 {
+			/* 512KB - bootloader[u-boot, uCbootloader] */
+			reg = <0x0 0x00080000>;
+			label = "BOOT_SPI";
+		};
+
+		partition@3f80000 {
+			/* 512KB - bootloade NOR r[u-boot, uCbootloader] */
+			reg = <0x03f80000 0x00080000>;
+			label = "B";
+		};
+
+		partition@80000 {
+			/* 256KB - bootloaders environment (uCenv) */
+			reg = <0x00080000 0x00040000>;
+	
+			label = "E";
+		};
+
+		partition@C0000 {
+			/* 256KB - bootloaders environment (u-boot) */
+			reg = <0x000C0000 0x00040000>;
+			label = "UENV";
+		};
 	};
 };
 
